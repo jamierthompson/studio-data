@@ -4,7 +4,11 @@ version = "0.1.0"
 description = "Data layer and tool functions for StudioOS — Postgres schema, business logic, and audit trails for an interior design practice"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "psycopg-pool>=3.2",
+    "psycopg[binary]>=3.2",
+    "pydantic-settings>=2.7.0",
+]
 
 [dependency-groups]
 dev = [
