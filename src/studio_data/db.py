@@ -52,6 +52,7 @@ def _get_pool() -> ConnectionPool:
             conninfo=settings.database_url,
             min_size=1,
             max_size=10,
+            open=True,
             kwargs={"row_factory": dict_row},
         )
     return _pool
