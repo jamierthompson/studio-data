@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: studio
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_DB: studioos
+    volumes:
+      # Persist data across container restarts
+      - pgdata:/var/lib/postgresql/data
+      # Auto-run migrations on first startup — Postgres executes any
+      # .sql files in this directory alphabetically when the data
+      # directory is empty (i.e., the very first `docker compose up`).
+      - ./migrations:/docker-entrypoint-initdb.d:ro
+
+volumes:
+  pgdata:
